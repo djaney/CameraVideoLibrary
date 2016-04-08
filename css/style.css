@@ -1,0 +1,28 @@
+.pane-video{
+    background-color: #000000;
+}
+.pane-video.video-selected{
+
+}
+.pane-video .label-select-video{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    height: 30px;
+    font-size: 30px;
+    color: #D4D2D4;
+}
+.video-screen{
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

@@ -1,0 +1,41 @@
+<div class="window-content">
+    <div class="pane-group">
+        <div class="pane pane-sm sidebar">
+            <ul class="list-group">
+              <li class="list-group-header">
+                <button class="btn btn-default" ng-click="selectDirectory()" ng-disabled="loadingFiles">
+                    <span class="icon icon-folder"></span>
+                    &nbsp;Select video folder
+                </button>
+              </li>
+              <li class="list-group-item" ng-repeat="video in videos | orderBy : '-created'" ng-class="{'active':selectedVideo==video}" ng-click="selectVideo(video)">
+                <!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> -->
+                <div class="media-body">
+                  <strong>{{video.title}}</strong>
+                  <p>{{video.created | date : 'medium'}}</p>
+                  <p>{{fileSizeToHuman(video.size)}}</p>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="pane pane-video" ng-class="{'video-selected':selectedVideo}">
+            <div class="label-select-video" ng-if="videos.length==0 && !selectedVideo">
+                <div>
+                    Select the folder where you import all camera videos.
+                </div>
+                <button class="btn btn-default" ng-click="selectDirectory()" ng-disabled="loadingFiles">
+                    <span class="icon icon-folder"></span>
+                    &nbsp;Select video folder
+                </button>
+            </div>
+            <div class="label-select-video" ng-if="loadingFiles">
+                Loading files...
+            </div>
+
+            <video controls class="video-screen" ng-if="selectedVideo">
+                <source ng-src="{{selectedVideo.path}}" type="{{selectedVideo.mime}}">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+</div>
