@@ -27,7 +27,7 @@ app.on('ready', function() {
     'title-bar-style': 'hidden',
     'enable-larger-than-screen': false,
   });
-  mainWindow.setMenuBarVisibility(false);
+  // mainWindow.setMenuBarVisibility(false);
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 

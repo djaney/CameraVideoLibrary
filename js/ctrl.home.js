@@ -14,9 +14,12 @@ angular.module('app.controllers')
         }
         $scope.loadFiles = function(){
             $scope.loadingFiles = true;
-            VideoService.loadList();
-            $scope.videos = VideoService.getList();
-            $scope.loadingFiles = false;
+            $timeout(function(){
+                VideoService.loadList();
+                $scope.videos = VideoService.getList();
+                $scope.loadingFiles = false;
+            });
+
         }
         $scope.selectVideo = function(video){
             $scope.selectedVideo = null;
