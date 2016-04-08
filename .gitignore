@@ -1,5 +1,6 @@
 /node_modules
-
+/CameraVideoLibrary-win32-ia32
+/CameraVideoLibrary-win32-x64
 
 # Windows image file caches
 Thumbs.db
