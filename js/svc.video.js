@@ -71,7 +71,9 @@ angular.module('app.services')
         getList: function(){
             if(this.list.length==0){
                 var raw = window.localStorage.getItem('videos') || "[]";
-                this.list = JSON.parse(raw);
+                
+                if(raw)
+                    this.list = JSON.parse(raw);
             }
 
             return this.list;
