@@ -19,10 +19,10 @@
                 </li>
             </ul>
             <ul class="list-group">
-              <li class="list-group-item"
-                  ng-repeat="video in videos | orderBy : '-created' | filter: searchString"
-                  ng-class="{'active':selectedVideo==video}"
-                  ng-click="selectVideo(video)">
+            <li class="list-group-item"
+                ng-repeat="video in videos | orderBy : '-created' | filter: searchString"
+                ng-class="{'active':selectedVideo==video}"
+                ng-click="selectVideo(video)">
                 <!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> -->
                 <div class="media-body">
                   <strong>{{video.title}}</strong>
