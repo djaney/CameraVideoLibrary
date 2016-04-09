@@ -25,7 +25,7 @@
                 ng-click="selectVideo(video)">
                 <!-- <img class="img-circle media-object pull-left" src="/assets/img/avatar.jpg" width="32" height="32"> -->
                 <div class="media-body">
-                  <strong>{{video.title}}</strong>
+                  <strong contenteditable ng-model="video.title" ng-change="editVideo(video)" >{{video.title}}</strong>
                   <p>{{video.created | date : 'medium'}}</p>
                   <p>{{fileSizeToHuman(video.size)}}</p>
                 </div>

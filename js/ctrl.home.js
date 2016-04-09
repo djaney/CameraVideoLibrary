@@ -4,6 +4,14 @@ angular.module('app.controllers')
         $scope.selectedVideo = null;
         $scope.loadingFiles = false;
         $scope.videos = VideoService.getList();
+
+        $scope.editVideo = function(video){
+            var info = {
+                title: video.title
+            }
+            VideoService.setVideoInfo(video.path, info);
+        }
+
         $scope.selectDirectory = function(){
             var dir = electronDialog.showOpenDialog({ properties: [ 'openDirectory' ]});
             if(dir){

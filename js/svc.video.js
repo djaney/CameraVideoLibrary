@@ -23,8 +23,19 @@ angular.module('app.services')
     return {
         list: [],
         getVideoDirs: function(){
-            var raw = window.localStorage.getItem('videoDirs') || [];
+            var raw = window.localStorage.getItem('videoDirs') || "[]";
             return JSON.parse(raw);
+        },
+        getVideoInfo: function(key){
+            var raw = window.localStorage.getItem('info') || "{}";
+            var info = JSON.parse(raw);
+            return info[key] || null;
+        },
+        setVideoInfo: function(key, value){
+            var raw = window.localStorage.getItem('info') || "{}";
+            var info = JSON.parse(raw);
+            info[key] = value;
+            window.localStorage.setItem('info',JSON.stringify(info));
         },
         setVideoDirs: function(dirs){
             for(var i in dirs){
@@ -69,13 +80,18 @@ angular.module('app.services')
 
         },
         getList: function(){
+            var _this = this;
             if(this.list.length==0){
                 var raw = window.localStorage.getItem('videos') || "[]";
-                
+
                 if(raw)
                     this.list = JSON.parse(raw);
             }
-
+            angular.forEach(this.list, function(file){
+                var info = _this.getVideoInfo(file.path) || {};
+                file.title = info.title || file.title;
+                file.description = info.description || file.title;
+            });
             return this.list;
         }
     };
